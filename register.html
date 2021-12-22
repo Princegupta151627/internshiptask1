@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register User</title>
+<link rel="stylesheet" href="./register.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script>
+            $(function(){
+                $("#btnRegister").click(function(){
+                    var user = {
+UserName: $("#UserName").val(),
+                        Password: $("#Password").val(),
+                        Email: $("#Email").val(),
+                        Mobile: $("#Mobile").val()
+                    };
+                    $.ajax({
+                        method: "POST",
+                        url: "http://127.0.0.1:8080/registeruser",
+                        data: user
+                    })
+                    alert("Registered Successfully");
+location.href="login.html";
+                })
+            })
+</script>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-center w-100" id="maindiv">
+<div>
+<h3 id="head">Register User</h3>
+<dl>
+<dt>User Name</dt>
+<dd><input type="text" id="UserName" class="form-control"></dd>
+<dt>Password</dt>
+<dd><input type="password" id="Password" class="form-control"></dd>
+<dt>Email</dt>
+<dd><input type="email" id="Email" class="form-control"></dd>
+<dt>Mobile</dt>
+<dd><input type="text" id="Mobile" class="form-control"></dd>
+</dl>
+<div class="d-grid">
+<button id="btnRegister" class="btnbtn-primary">Register</button>
+</div>
+<div class="mt-2">
+<a href="login.html">Have Account ? Login</a>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="./login.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script>
+            $(function(){
+                $("#btnLogin").click(function(){
+                    $.ajax({
+                        url: "http://127.0.0.1:8080/getusers",
+                        method: "GET",
+                        success: function(data){
+                            $.each(data, function(key, value){
+                                 if(value.UserName==$("#txtName").val() &&value.Password==$("#txtPwd").val()) {
+location.href = "shopping.html";
+                                 } else {
+                                     $("#msg").html("Invalid Credentials");
+                                 }
+                            })
+                        }
+                    })
+                })
+            })
+</script>
+</head>
+<body class="container-fluid">
+<div class="d-flex justify-content-center align-items-center" id="maindiv">
+<div>
+<h3 id="heading">User Login</h3>
+<dl>
+<dt id="Uname">User Name</dt>
+<dd><input type="text" id="txtName" class="form-control"></dd>
+<dt id="Upas">Password</dt>
+<dd><input type="password" id="txtPwd" class="form-control"></dd>
+</dl>
+<div class="d-grid">
+<button id="btnLogin" class="btnbtn-primary">Login</button>
+</div>
+<div class="mt-2">
+    <a href="register.html">Don't have a account ?</a>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
